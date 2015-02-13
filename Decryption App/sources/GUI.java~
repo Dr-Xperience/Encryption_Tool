@@ -1,0 +1,51 @@
+/** *********************************************************************************
+ * TITLE 	: THE CLASS TO CONTROL THE APPLICATION GUI
+ * AUTHOR	: RK10R04A01;11000527;ANUBHAV ARUN GUPTA
+ * DATE/TIME	: AD 2012.11.12.12.12
+ * EDITOR	: VIM
+ * JAVA VERSION	: 1.6.0_22
+ * JRE		: OpenJDK Runtime Environment (IcedTea6 1.10.3) (fedora-59.1.10.3.fc16-x86_64)
+ * VERSION	: $Id: GUI.java,v 1.10 2012/11/20 06:48:31 Dr.Xperience Exp Dr.Xperience $
+ * *********************************************************************************** */
+
+import javax.swing.*;
+import java.awt.*;
+
+public class GUI
+{
+
+  JFrame vFrame;
+  JPanel vPanel;
+
+
+  public void frameBeg (String vTitle)
+  {
+    vFrame = new JFrame (vTitle);
+    vFrame.setUndecorated (true);
+    //vFrame.getRootPane ().setWindowDecorationStyle (JRootPane.FRAME);
+    vFrame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+  }
+
+  public void frameEnd ()
+  {
+    vFrame.setBounds (200, 200, 350, 150);
+    vFrame.setResizable (false);
+    vFrame.setVisible (true);
+  }
+
+  JButton vEncryptButton = new JButton ("Decrypt");
+
+  JButton vCloseButton = new JButton ("Close");
+
+  JButton vInputButton = new JButton ("Input");
+
+  JButton vOutputButton = new JButton ("Output");
+ 
+ // JButton vGenerateButton = new JButton("GenerateKeys");
+
+  JTextField vInputField = new JTextField (20);
+
+  JTextField vOutputField = new JTextField (20);
+
+  JFileChooser vFileChooser = new JFileChooser ();
+}

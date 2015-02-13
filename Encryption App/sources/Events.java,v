@@ -1,0 +1,393 @@
+head	1.12;
+access;
+symbols;
+locks
+	Dr.Xperience:1.12; strict;
+comment	@# @;
+
+
+1.12
+date	2012.11.22.07.41.14;	author Dr.Xperience;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2012.11.20.06.48.06;	author Dr.Xperience;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2012.11.19.07.51.12;	author Dr.Xperience;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2012.11.16.19.27.53;	author Dr.Xperience;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2012.11.16.19.27.29;	author Dr.Xperience;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2012.11.16.18.05.10;	author Dr.Xperience;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2012.11.16.17.13.36;	author Dr.Xperience;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2012.11.16.15.27.31;	author Dr.Xperience;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2012.11.16.13.42.20;	author Dr.Xperience;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2012.11.16.13.12.58;	author Dr.Xperience;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2012.11.12.10.23.00;	author Dr.Xperience;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2012.11.12.10.03.26;	author Dr.Xperience;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.12
+log
+@*** empty log message ***
+@
+text
+@/** *********************************************************************************
+ * TITLE        : THE CLASS TO CONTROL THE APPLICATION EVENTS 
+ * AUTHOR       : RK10R04A01;11000527;ANUBHAV ARUN GUPTA
+ * DATE/TIME    : AD 2012.11.12.12.12
+ * EDITOR       : VIM
+ * JAVA VERSION : 1.6.0_22
+ * JRE          : OpenJDK Runtime Environment (IcedTea6 1.10.3) (fedora-59.1.10.3.fc16-x86_64)
+ * VERSION      : $Id: Events.java,v 1.11 2012/11/20 06:48:06 Dr.Xperience Exp Dr.Xperience $
+ * ************************************************************************************* */
+
+import java.io.*;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class Events extends GUI
+{
+  Encrypt vEny = new Encrypt();
+  void make ()
+  {
+/*
+    vPanel = new JPanel();
+    vPanel.add(vGenerateButton);
+    vFrame.getContentPane ().add (BorderLayout.NORTH, vPanel);
+*/
+    vPanel = new JPanel ();
+    vPanel.add (vEncryptButton);
+    vPanel.add (vCloseButton);
+    vFrame.getContentPane ().add (BorderLayout.SOUTH, vPanel);
+
+    vPanel = new JPanel ();
+    vPanel.add (vInputField);
+    vPanel.add (vOutputField);
+    vFrame.getContentPane ().add (BorderLayout.CENTER, vPanel);
+
+    vPanel = new JPanel ();
+    vPanel.add (vInputButton);
+    vPanel.add (vOutputButton);
+    vPanel.setLayout (new BoxLayout (vPanel, BoxLayout.Y_AXIS));
+    vFrame.getContentPane ().add (BorderLayout.EAST, vPanel);
+
+ //   vGenerateButton.addActionListener (new vGenerateButton_Click ());
+ 
+    vEncryptButton.addActionListener (new vEncryptButton_Click ());
+    vCloseButton.addActionListener (new vCloseButton_Click ());
+
+    vInputButton.addActionListener (new vInputButton_Click ());
+    vOutputButton.addActionListener (new vOutputButton_Click ());
+
+    vFileChooser.setFileSelectionMode (JFileChooser.FILES_ONLY);
+    
+  }
+
+
+  class vEncryptButton_Click implements ActionListener
+  {
+    public void actionPerformed (ActionEvent e)
+    {
+     File vInFile= new File(vInputField.getText());
+     File vOutFile= new File(vOutputField.getText()); 
+     vEny.encrypt(vInFile,vOutFile);
+    }
+  }
+/*
+  class vGenerateButton_Click implements ActionListener
+  {
+    public void actionPerformed (ActionEvent e)
+    {
+
+      vEny.generateKey();
+    }
+
+  }
+*/
+  class vCloseButton_Click implements ActionListener
+  {
+    public void actionPerformed (ActionEvent e)
+    {
+
+      System.exit (0);
+    }
+
+  }
+  class vInputButton_Click implements ActionListener
+  {
+    public void actionPerformed (ActionEvent e)
+    {
+      int returnVal = vFileChooser.showOpenDialog (null);
+
+      if (returnVal == JFileChooser.APPROVE_OPTION)
+	{
+	  File vFile = vFileChooser.getSelectedFile ();
+	    vInputField.setText (vFile.getAbsolutePath());
+            vOutputField.setText(vFile.toString()+",env");//vFile.getAbsolutePath());
+	}
+    }
+
+  }
+
+  class vOutputButton_Click implements ActionListener
+  {
+    public void actionPerformed (ActionEvent e)
+    {
+      int returnVal = vFileChooser.showOpenDialog (null);
+
+      if (returnVal == JFileChooser.APPROVE_OPTION)
+	{
+	  File vFile = vFileChooser.getSelectedFile ();
+	   
+            vOutputField.setText(vFile.toString());//vFile.getAbsolutePath());
+	}
+
+
+    }
+
+  }
+}
+@
+
+
+1.11
+log
+@*** empty log message ***
+@
+text
+@d8 1
+a8 1
+ * VERSION      : $Id: Events.java,v 1.10 2012/11/19 07:51:12 Dr.Xperience Exp Dr.Xperience $
+d21 1
+d25 1
+a25 1
+
+d42 1
+a42 1
+    vGenerateButton.addActionListener (new vGenerateButton_Click ());
+d64 1
+a64 1
+
+d74 1
+d94 1
+a94 1
+            vOutputField.setText(vFile.toString());//vFile.getAbsolutePath());
+d109 2
+a110 1
+	    vInputField.setText ("got it");
+@
+
+
+1.10
+log
+@*** empty log message ***
+@
+text
+@d8 1
+a8 1
+ * VERSION      : $Id: Events.java,v 1.9 2012/11/16 19:27:53 Dr.Xperience Exp Dr.Xperience $
+d60 1
+a60 1
+     vEny.decrypt(vInFile,vOutFile);
+@
+
+
+1.9
+log
+@*** empty log message ***
+@
+text
+@d8 1
+a8 1
+ * VERSION      : $Id: Events.java,v 1.8 2012/11/16 19:27:29 Dr.Xperience Exp Dr.Xperience $
+d60 1
+a60 1
+     vEny.encrypt(vInFile,vOutFile);
+@
+
+
+1.8
+log
+@*** empty log message ***
+@
+text
+@d8 1
+a8 1
+ * VERSION      : $Id: Events.java,v 1.7 2012/11/16 18:05:10 Dr.Xperience Exp Dr.Xperience $
+d60 1
+a60 1
+     vEny.decrypt(vInFile,vOutFile);
+@
+
+
+1.7
+log
+@*** empty log message ***
+@
+text
+@d8 1
+a8 1
+ * VERSION      : $Id: Events.java,v 1.6 2012/11/16 17:13:36 Dr.Xperience Exp $
+d60 1
+a60 1
+     vEny.encrypt(vInFile,vOutFile);
+@
+
+
+1.6
+log
+@*** empty log message ***
+@
+text
+@d8 1
+a8 1
+ * VERSION      : $Id: Events.java,v 1.5 2012/11/16 15:27:31 Dr.Xperience Exp Dr.Xperience $
+d49 2
+a50 1
+    vFileChooser.setFileSelectionMode (JFileChooser.FILES_AND_DIRECTORIES);
+@
+
+
+1.5
+log
+@*** empty log message ***
+@
+text
+@d8 1
+a8 1
+ * VERSION      : $Id: Events.java,v 1.4 2012/11/16 13:42:20 Dr.Xperience Exp Dr.Xperience $
+d18 1
+d21 4
+d41 2
+d57 10
+d68 1
+d70 1
+d90 2
+a91 1
+	    vInputField.setText ("got it");
+@
+
+
+1.4
+log
+@*** empty log message ***
+@
+text
+@d8 1
+a8 1
+ * VERSION      : $Id: Events.java,v 1.3 2012/11/16 13:12:58 Dr.Xperience Exp Dr.Xperience $
+d11 1
+d20 1
+a20 1
+
+d25 11
+d38 5
+d48 1
+a48 1
+    public void actionPerformed (ActionEvent click)
+d55 10
+a64 1
+    public void actionPerformed (ActionEvent click)
+d66 1
+d68 5
+d77 16
+@
+
+
+1.3
+log
+@*** empty log message ***
+@
+text
+@d8 1
+a8 1
+ * VERSION      : $Id: Events.java,v 1.2 2012/11/12 10:23:00 Dr.Xperience Exp Dr.Xperience $
+d11 2
+a12 1
+import java.swing.*;
+d15 1
+a15 1
+public class  Events extends GUI
+d17 10
+a26 2
+   class vEncryptButton_Click()
+   {
+a27 1
+   }
+d29 1
+a29 1
+  class vCloseButton_Click()
+d31 11
+@
+
+
+1.2
+log
+@*** empty log message ***
+@
+text
+@d8 1
+a8 1
+ * VERSION      : $Id: Events.java,v 1.1 2012/11/12 10:03:26 Dr.Xperience Exp Dr.Xperience $
+d16 9
+a24 1
+   
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d8 1
+a8 1
+ * VERSION      : $Id$
+d11 8
+@
